@@ -61,24 +61,29 @@ The player needs to face challenges that require him to use Chef to overcome. Th
 An application exists on a remote system.
 
 * remote_file
-* execute
 
 ### Some Assembly Required
 
 The application needs to be unarchived. The application needs to be compiled. The application needs to be executed.
 
-* remote_file
 * execute
 * notifies
+
+### Put the Weapon Down
+
+A directory may have to be created. A file with little or no content has to be created.
+
+* directory
+* file
+
 
 ### Drop the Idol
 
 A directory may have to be created. The file has to be copied.
 
 * directory
-* file
-* execute
 * cookbook_file
+
 
 ### Drop The Idol - This Time No Funny Business
 
@@ -86,6 +91,7 @@ A directory may have to be created. The file has to be copied. The contents of t
 
 * directory
 * template
+
 
 ### Lets Get This Machine Up and Running
 
