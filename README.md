@@ -9,7 +9,7 @@ The learner is the protagonist of this story. Laid before them are a series of o
 The content is separated into episodes.
 
 ```
-...newb raises the ChefDK and watches it shimmer...
+...Newb raises the ChefDK and watches it shimmer...
       /| ________________
 O|===|* >________________>
       \|
@@ -17,7 +17,7 @@ O|===|* >________________>
 
 ## Episodes
 
-### Episode 0: Everyone was once a newb...AKA Welcome to Your Chef Workstation
+### Episode 0: Everyone Was Once a Newb: Welcome to Your Chef Workstation
 Objectives:
   + Enter the dungeon via the gates of RDP
   + Equip your tools including:
