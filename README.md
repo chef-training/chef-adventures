@@ -116,7 +116,6 @@ The players login to the systems.  Explain the tools available to them and what 
   + Add the availability zone to the file.  How can we capture this?  (hint: metadata)
 
 ### Episode 3: 🐱  Your Familiar, Ohai: Dynamic Attributes
-Section 4 - Make it Dynamic
   + Separate code from variables (attributes)
   + Introducing Ohai
   + Learn about node attributes
