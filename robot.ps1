@@ -36,3 +36,5 @@ git checkout v4.2
 kitchen converge
 git checkout v4.3
 kitchen converge
+git checkout v4.4
+kitchen converge
