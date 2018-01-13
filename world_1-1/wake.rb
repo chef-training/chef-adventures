@@ -2,6 +2,7 @@ require 'yaml'
 require 'logger'
 require 'tty-prompt'
 require 'tty-screen'
+require 'mixlib/shellout'
 
 $logger = Logger.new(STDOUT)
 $logger.level = Logger::WARN
@@ -13,8 +14,9 @@ class GameState
 
   def advance!(command)
     @state['commands'] += [ command, Time.now ]
-
-    if menu.include?(command)
+    if command == 'exit'
+      @exit = true
+    elsif options.keys.include?(command)
       puts options[command]['description']
       puts "\n"
 
@@ -51,8 +53,16 @@ class GameState
     current_scene['menu']
   end
 
+  def events
+    current_scene['events'] || {}
+  end
+
   def exit?
     @exit
+  end
+
+  def complete?
+    @state['current_scene'] == 'complete'
   end
 
   def exit!
@@ -82,18 +92,47 @@ end
 def start_game
 
   while not state.exit?
-    prompt = TTY::Prompt.new
+    # Fire the enter scene events
 
+    fire_event state.events['enter']
+
+    # Format and display the description
+
+    prompt = TTY::Prompt.new
+    # TODO: display the text in a way that it fills the screen and auto-wraps
+    # TODO: display ascii art next to it.
     size = TTY::Screen.width - 5
 
     prompt.say ((state.description.length + size - 1)/ size).times.map { |i| state.description[i * size, size] }.join("\n")
 
+    fire_event state.events['after_enter']
+
+    next if state.exit?
+
+    # Display the choices and ask for a commdn
+
     command = display_menu(state)
 
+    # Advance the state based on the command given
+
     state.advance!(command)
+
+    # Perform any world processing with the new state
+
     process_world(state)
   end
   exit_game(state)
+end
+
+def fire_event(event)
+  return unless event
+  condition = event['condition']
+  $logger.debug "Checking Event [#{event}] Condition: #{condition}"
+  result = Mixlib::ShellOut.new(condition).run_command
+  $logger.debug "Event Result: #{result.exitstatus}"
+  if result.exitstatus == 0
+    state.advance!(event['transition'])
+  end
 end
 
 def exit_game(state)
@@ -106,5 +145,18 @@ def display_menu(state)
   prompt.select('Choose:',state.menu)
 end
 
-load_current_game_state
-start_game
+# Allow the game engine to use additional commands.
+
+command = ARGV[0]
+
+if command.nil? || command == 'run'
+  load_current_game_state
+  start_game
+elsif command == 'check'
+  load_current_game_state
+  if state.complete?
+    exit 0
+  else
+    exit 1
+  end
+end

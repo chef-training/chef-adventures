@@ -3,30 +3,19 @@ current_scene: introduction
 commands: []
 scenes:
   introduction:
-    description: "Under your feet is a patch of shiny metal that ripples out in seismic
-      patterns of whispers and yells that climbs shear infinite cliffs reaching up
-      to the sky and plunges into darkness. Hanging in the dark sky, painting the
-      cliffs in red light, a large series of glowing numbers that continues to grow
-      larger and larger.\n'Hey you! You over there!' comes bellowing out of the mouth
-      of a large troll that bounds his way to where you now stand.\n'How'd did you
-      get here?! Nevermind. All that matters is you crush your numbers this quarter!
-      Pick up your hammer and get back to bit mining!' "
+    description: "Under your feet is a patch of shiny metal that ripples out in seismic patterns of whispers and yells that climbs shear infinite cliffs reaching up to the sky and plunges into darkness. Hanging in the dark sky, painting the cliffs in red light, a large series of glowing numbers that continues to grow larger and larger.\n\n'Hey you! You over there!' comes bellowing out of the mouth of a large troll that bounds his way to where you now stand.\n'How'd did you get here?! Nevermind. All that matters is you crush your numbers this quarter! Pick up your hammer and get back to bit mining!' "
     menu:
     - ask-where-am-i
     - get-to-work
     options:
       ask-where-am-i:
-        description: The troll pulls his face away from the increasing numbers in
-          the sky. 'You are a bit miner! Your job is to keep the breaking this down
-          into bits and my job is to get you to do it!'
+        description: The troll pulls his face away from the increasing numbers in the sky. 'You are a bit miner! Your job is to keep the breaking this down into bits and my job is to get you to do it!'
       get-to-work:
-        description: You decide to grab the hammer and start thinking that once this
-          troll leaves you alone for a bit that you'll be able to get some work done.
+        description: You decide to grab the hammer and start thinking that once this troll leaves you alone for a bit that you'll be able to get some work done.
         transition: get-to-work
   get-to-work:
     description: You stand with your large hammer over a hellish silicon landscape.
-      Glowing red numbers illuminating the sky. A large troll stands particularly
-      close, staring over your shoulder.
+      Glowing red numbers illuminating the sky. A large troll stands particularly close, staring over your shoulder.
     menu:
     - escape
     - rest
@@ -40,18 +29,28 @@ scenes:
         description: You sigh and think about how much all this mining reminds you
           of playing EVE Online.
       mine-bits:
-        description: Bits fly up into the air as you smash your hands into silicon
-          below you. The troll laughs excitedly as as the large LED numbers in the
-          sky continue to climb higher with each smash.
+        description: Bits fly up into the air as you smash your hands into silicon below you. The troll laughs excitedly as as the large LED numbers in the sky continue to climb higher with each smash.
       inspect-gem:
-        description: "'No, no, no. My name is InSpec gem. I am able to find things
-          hidden in the darkness. But before that happens you will first need to learn
-          to code.' After the gem tells you how it works you think you'd be willing
-          to give it a try."
+        description: "'No, no, no. My name is InSpec gem. I am able to find things hidden in the darkness. But before that happens you will first need to learn to code.' After the gem tells you how it works you think you'd be willing to give it a try."
         transition: get-to-code
   get-to-code:
     description: "'Try to see if you can find any weaknesses. After you got to /sleep/, ask me to run this in the code world:\n\n$ inspec
       exec find_weakness"
+    menu:
+    - sleep
+    options:
+      sleep:
+        description: You feel your thoughts and consciousness pour out of your body and into the silicon below your feet. You find it hard think as yourself and use your words. You feel them replaced by the words of the silicon. Though you must remember 'wake', otherwise you will never be able to find. your way back to yourself again and become part of the silicon.
+        transition: exit
+      found-chef-apply:
+        description: "'Welcome back sleepy head! It looks like you found what you needed.' the gem conveys to you in various tones."
+        transition: find-fortune
+    events:
+      enter:
+        condition: inspec exec /events/player_discovered_weakness
+        transition: found-chef-apply
+  find-fortune:
+    description: Trolls love attention first unless they have a 'fortune' to obsess over. Perhaps you could use me to find the fortune is after and bring it back. Run 'inspec exec find_fortune'
     menu:
     - sleep
     options:
@@ -61,4 +60,54 @@ scenes:
           and use your words. You feel them replaced by the words of the silicon.
           Though you must remember 'wake', otherwise you will never be able to find
           your way back to yourself again and become part of the silicon.
+        transition: exit
+      found-fortune:
+        description: Yes, that is it. We have found the fortune!
+        transition: learn-chef-apply
+    events:
+      enter:
+        condition: inspec exec /events/player_discovered_fortune
+        transition: found-fortune
+  learn-chef-apply:
+    description: "The 'chef-apply' command is powerful. With it you can do many wonderful things in worlds like this. Use it to uncover the fortune and free us from this troll.
+
+    $ chef-apply -e \"package 'fortunes'\""
+    menu:
+    - sleep
+    options:
+      sleep:
+        description: "You feel your thoughts and consciousness pour out of your body and into the silicon below your feet. You find it hard think as yourself and use your words. You feel them replaced by the words of the silicon. Though you must remember 'wake', otherwise you will never be able to find your way back to yourself again and become part of the silicon."
+        transition: exit
+      player_recovered_fortune:
+        description: You have found the fortune!
+        transition: distracted-troll
+    events:
+      enter:
+        condition: inspec exec /events/player_recovered_fortune
+        transition: player_recovered_fortune
+  distracted-troll:
+    description: "Oh my! Out of my way you! My lovely fortune. My precious fortune. The troll open his fortune
+
+      $ troll # /usr/share/games/fortune
+
+    Oh how appropriate. The troll grabs the fortune, hoists it over his head, and then scampers off into the distance. The light on your key turns green.
+
+    'Hey take me with you before you go?' the Inspec gem cries out."
+    menu:
+    - 'take-inspec'
+    - 'leave-inspec'
+    options:
+      leave-inspec:
+        description: "You turn back on your friend and move through the door into ..."
+        transition: complete
+      take-inspec:
+        description: "You turn back to your friend, scoop them up, and tuck them into your pocket move through the door into ..."
+
+        transition: complete
+  complete:
+    description: "Your body softly illuminates as you approach the door until finally you become solid light."
+    options: {}
+    events:
+      after_enter:
+        condition: "true"
         transition: exit

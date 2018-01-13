@@ -5,12 +5,15 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+set HISTFILE=$HOME/.bash_history
+
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+PROMPT_COMMAND="history -a; history -n; check_for_complete"
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
@@ -99,7 +102,14 @@ fi
 #fi
 
 function wake {
-  /opt/chefdk/bin/chef exec ruby wake.rb
+  /opt/chefdk/bin/chef exec ruby wake.rb run
+}
+
+function check_for_complete {
+  /opt/chefdk/bin/chef exec ruby wake.rb check
+  if [ $? -eq 0 ] ; then
+    exit 0
+  fi
 }
 
 echo "Entering Game World."

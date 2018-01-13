@@ -28,14 +28,26 @@ RUN apt-get clean
 ADD Gemfile /
 RUN /opt/chefdk/bin/chef exec bundle install
 ADD wake.rb /
+
+# Add the shell state
 ADD bashrc /root/.bashrc
+ADD bash_history /root/.bash_history
 
 # Add the game
 ADD .game_state.yml /
 
 
-# Add the additional commands for the InSpec
-ADD find_weakness/ /find_weakness
+# Add the additional commands for InSpec for player
+RUN mkdir /tools
+# TODO: eventually thet ools should remain in here and then be distributed when they are needed.
+ADD tools/find_weakness/ /find_weakness
+ADD tools/find_fortune/ /find_fortune
+
+# Add InSpec for Game
+RUN mkdir /events
+ADD events/player_discovered_weakness/ /events/player_discovered_weakness
+ADD events/player_discovered_fortune/ /events/player_discovered_fortune
+ADD events/player_recovered_fortune/ /events/player_recovered_fortune
 
 # presets
 VOLUME ["/data"]

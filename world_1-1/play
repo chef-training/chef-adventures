@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker_id=$(docker build . | grep "Successfully built" | cut -d ' ' -f 3)
+docker run -it $docker_id
