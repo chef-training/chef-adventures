@@ -1,15 +1,22 @@
+# Characters: https://github.com/dysfunc/ascii-emoji
+# Mountain :https://www.ascii-code.com/ascii-art/nature/mountains.php
 ---
 current_scene: introduction
 commands: []
 scenes:
   introduction:
-    description: "Under your feet is a patch of shiny metal that ripples out in seismic patterns of whispers and yells that climbs shear infinite cliffs reaching up to the sky and plunges into darkness. Hanging in the dark sky, painting the cliffs in red light, a large series of glowing numbers that continues to grow larger and larger.\n\n'Hey you! You over there!' comes bellowing out of the mouth of a large troll that bounds his way to where you now stand.\n'How'd did you get here?! Nevermind. All that matters is you crush your numbers this quarter! Pick up your hammer and get back to bit mining!' "
+    picture: silicon-mountain.txt
+    description: "You are standing on a jagged, metal mountainside. The silicon tears the landscape with shear infinite cliffs reaching out to the dark night sky and ground below. A series of glowing red digits hang in the sky providing this world's only illumination. You watch the number increase in size and hear a distant laughter that sounds as though it is coming closer.\n\nヽ༼ ಠ益ಠ ༽ﾉ \"Hey you! You over there!\" A large troll yells out as he bounds towards you.\n\"How'd did you get here?! Nevermind! All that matters is that you crush your numbers this quarter! Pick up your hammer and get back to bit mining!\""
     menu:
-    - ask-where-am-i
-    - get-to-work
+    -
+      name: "Ask the troll: 'Where am I?'"
+      value: ask-where-am-i
+    -
+      name: "Grab the hammer and start smashing some bits."
+      value: get-to-work
     options:
       ask-where-am-i:
-        description: The troll pulls his face away from the increasing numbers in the sky. 'You are a bit miner! Your job is to keep the breaking this down into bits and my job is to get you to do it!'
+        description: "The troll pulls his face away from the increasing numbers in the sky.\n\nヽ༼ ಠ益ಠ ༽ﾉ \"You are a bit miner! Your job is to make the bits My job is to get you to do it. So get to work already!\""
       get-to-work:
         description: You decide to grab the hammer and start thinking that once this troll leaves you alone for a bit that you'll be able to get some work done.
         transition: get-to-work
@@ -17,49 +24,54 @@ scenes:
     description: You stand with your large hammer over a hellish silicon landscape.
       Glowing red numbers illuminating the sky. A large troll stands particularly close, staring over your shoulder.
     menu:
-    - escape
-    - rest
-    - mine-bits
-    - inspect-gem
+    -
+      name: "Try to escape by opening a portal."
+      value: escape
+    -
+      name: "Take a break from mining."
+      value: rest
+    -
+      name: "Smash it!"
+      value: mine-bits
+    -
+      name: "Inspect the gem."
+      value: inspect-gem
     options:
       escape:
-        description: The doorway to this world is blocked. It seems you're stuck here
-          until you can help this troll find his fortune.
+        description: The doorway to this world is blocked. It seems you're stuck here until you can help this troll find his fortune.
       rest:
-        description: You sigh and think about how much all this mining reminds you
-          of playing EVE Online.
+        description: You sigh and think about how much all this mining reminds you of playing EVE Online.
       mine-bits:
-        description: Bits fly up into the air as you smash your hands into silicon below you. The troll laughs excitedly as as the large LED numbers in the sky continue to climb higher with each smash.
+        description: "Bits fly up into the air as you smash your hands into silicon below you.\n\nヽ༼ ಠ益ಠ ༽ﾉ The troll laughs excitedly as the large LED numbers in the sky continue to climb higher."
       inspect-gem:
-        description: "'No, no, no. My name is InSpec gem. I am able to find things hidden in the darkness. But before that happens you will first need to learn to code.' After the gem tells you how it works you think you'd be willing to give it a try."
+        description: "{•̃_•̃} 'No, no, no. My name is InSpec the gem! I am able to find things hidden in the darkness. But before that happens you will need to find a profile. Maybe hiding under some of thos bits.' After the gem tells you how it works you think you'd be willing to give it a try."
         transition: get-to-code
   get-to-code:
-    description: "'Try to see if you can find any weaknesses. After you got to /sleep/, ask me to run this in the code world:\n\n$ inspec
-      exec find_weakness"
+    description: "{•̃_•̃} \"Try to see if you can find any tools lying around. When you commune with the code world, ask me to run this command\":\n\n$ inspec exec find_tools"
     menu:
-    - sleep
+    -
+      name: "Commune with the silicon."
+      value: commune
     options:
-      sleep:
-        description: You feel your thoughts and consciousness pour out of your body and into the silicon below your feet. You find it hard think as yourself and use your words. You feel them replaced by the words of the silicon. Though you must remember 'wake', otherwise you will never be able to find. your way back to yourself again and become part of the silicon.
+      commune:
+        description: "You feel your thoughts and consciousness pour out of your body and into the silicon below your feet. You find it hard think as yourself and use your words. You feel them replaced by the words of the silicon."
         transition: exit
       found-chef-apply:
-        description: "'Welcome back sleepy head! It looks like you found what you needed.' the gem conveys to you in various tones."
+        description: "{•̃_•̃} \"Welcome back! It looks like you found what you needed.\" says the glistening stone through words composed of various tones."
         transition: find-fortune
     events:
       enter:
-        condition: inspec exec /events/player_discovered_weakness
+        condition: inspec exec /events/player_discovered_tools
         transition: found-chef-apply
   find-fortune:
-    description: Trolls love attention first unless they have a 'fortune' to obsess over. Perhaps you could use me to find the fortune is after and bring it back. Run 'inspec exec find_fortune'
+    description: "{•̃_•̃} \"Trolls love attention first unless they have a 'fortune' to obsess over. Perhaps you could use me to find the fortune is after and bring it back.\" Return to the code world and ask me to run\":\n\n$ inspec exec find_fortune"
     menu:
-    - sleep
+    -
+      name: "Commune with the silicon."
+      value: commune
     options:
-      sleep:
-        description: You feel your thoughts and consciousness pour out of your body
-          and into the silicon below your feet. You find it hard think as yourself
-          and use your words. You feel them replaced by the words of the silicon.
-          Though you must remember 'wake', otherwise you will never be able to find
-          your way back to yourself again and become part of the silicon.
+      commune:
+        description: "You feel your thoughts and consciousness pour out of your body and into the silicon below your feet. You find it hard think as yourself and use your words. You feel them replaced by the words of the silicon."
         transition: exit
       found-fortune:
         description: Yes, that is it. We have found the fortune!
@@ -69,14 +81,14 @@ scenes:
         condition: inspec exec /events/player_discovered_fortune
         transition: found-fortune
   learn-chef-apply:
-    description: "The 'chef-apply' command is powerful. With it you can do many wonderful things in worlds like this. Use it to uncover the fortune and free us from this troll.
-
-    $ chef-apply -e \"package 'fortunes'\""
+    description: "{•̃_•̃} \"The tool you found, 'chef-apply', is powerful in the code world. I can detect things, while it can correct things. Together, with your help, we may be able to recover the troll's 'fortunes' and us get out of here.\" inspec says as it stares off towards the horizon.\n\n\"When you get back to the code word wield the power of 'chef-apply' by running\":\n\n$ chef-apply -e \"package 'fortunes'\""
     menu:
-    - sleep
+    -
+      name: "Commune with the silicon."
+      value: commune
     options:
-      sleep:
-        description: "You feel your thoughts and consciousness pour out of your body and into the silicon below your feet. You find it hard think as yourself and use your words. You feel them replaced by the words of the silicon. Though you must remember 'wake', otherwise you will never be able to find your way back to yourself again and become part of the silicon."
+      commune:
+        description: "You feel your thoughts and consciousness pour out of your body and into the silicon below your feet. You find it hard think as yourself and use your words. You feel them replaced by the words of the silicon."
         transition: exit
       player_recovered_fortune:
         description: You have found the fortune!
@@ -86,16 +98,20 @@ scenes:
         condition: inspec exec /events/player_recovered_fortune
         transition: player_recovered_fortune
   distracted-troll:
-    description: "Oh my! Out of my way you! My lovely fortune. My precious fortune. The troll open his fortune
+    description: "༼ ༎ຶ ෴ ༎ຶ༽ 'Oh my! Out of my way you! My lovely fortune! My precious fortune!' The troll open his fortune
 
       $ troll # /usr/share/games/fortune
 
     Oh how appropriate. The troll grabs the fortune, hoists it over his head, and then scampers off into the distance. The light on your key turns green.
 
-    'Hey take me with you before you go?' the Inspec gem cries out."
+    {•̃_•̃} 'Hey take me with you before you go?' InSpec cries out."
     menu:
-    - 'take-inspec'
-    - 'leave-inspec'
+    -
+      name: Grab the gem and make a break for it.
+      value: take-inspec
+    -
+      name: Leave the gem and get out of the there.
+      value: leave-inspec
     options:
       leave-inspec:
         description: "You turn back on your friend and move through the door into ..."

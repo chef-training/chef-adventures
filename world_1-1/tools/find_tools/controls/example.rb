@@ -1,7 +1,7 @@
 # encoding: utf-8
 # copyright: 2018, InSpec Gem
 
-describe "The command 'chef-apply'" do
+describe "The tool 'chef-apply'" do
   it 'exists!' do
     expect(command('chef-apply')).to exist
   end

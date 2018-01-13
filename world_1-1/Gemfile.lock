@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    colorize (0.8.1)
     equatable (0.5.0)
     hitimes (1.2.6)
     necromancer (0.4.0)
@@ -23,13 +24,17 @@ GEM
       wisper (~> 2.0.0)
     tty-screen (0.6.4)
     wisper (2.0.0)
+    word_wrap (1.0.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  colorize
+  tty-color
   tty-prompt
   tty-screen
+  word_wrap
 
 BUNDLED WITH
    1.16.0.pre.3

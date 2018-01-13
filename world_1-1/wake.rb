@@ -3,6 +3,11 @@ require 'logger'
 require 'tty-prompt'
 require 'tty-screen'
 require 'mixlib/shellout'
+require 'colorize'
+require 'word_wrap'
+require 'word_wrap/core_ext'
+
+# [:black, :light_black, :red, :light_red, :green, :light_green, :yellow, :light_yellow, :blue, :light_blue, :magenta, :light_magenta, :cyan, :light_cyan, :white, :light_white, :default]
 
 $logger = Logger.new(STDOUT)
 $logger.level = Logger::WARN
@@ -17,7 +22,7 @@ class GameState
     if command == 'exit'
       @exit = true
     elsif options.keys.include?(command)
-      puts options[command]['description']
+      puts options[command]['description'].colorize(:white)
       puts "\n"
 
       if options[command]['transition'] == 'exit'
@@ -47,6 +52,10 @@ class GameState
 
   def description
     current_scene['description']
+  end
+
+  def picture
+    File.read(current_scene['picture']) if current_scene['picture']
   end
 
   def menu
@@ -99,11 +108,7 @@ def start_game
     # Format and display the description
 
     prompt = TTY::Prompt.new
-    # TODO: display the text in a way that it fills the screen and auto-wraps
-    # TODO: display ascii art next to it.
-    size = TTY::Screen.width - 5
-
-    prompt.say ((state.description.length + size - 1)/ size).times.map { |i| state.description[i * size, size] }.join("\n")
+    prompt.say layout(state)
 
     fire_event state.events['after_enter']
 
@@ -124,6 +129,12 @@ def start_game
   exit_game(state)
 end
 
+def layout(scene)
+  output = ""
+  output += state.picture.to_s
+  output += state.description.colorize(:white).fit(TTY::Screen.width)
+end
+
 def fire_event(event)
   return unless event
   condition = event['condition']
@@ -142,7 +153,11 @@ end
 
 def display_menu(state)
   prompt = TTY::Prompt.new
-  prompt.select('Choose:',state.menu)
+  prompt.select('Choose:'.colorize(:light_yellow)) do |menu|
+    state.menu.each do |item|
+      menu.choice item['name'], item['value']
+    end
+  end
 end
 
 # Allow the game engine to use additional commands.

@@ -52,12 +52,12 @@ You feel your thoughts and consciousness pour out of your body and into the sili
 ## Puzzle
 
 ```
-$ inspec exec find_weakness
+$ inspec exec find_tools
 # Learn that the chef-apply command is vulnerable
 $ wake
 ```
 
-"What did you see?" asks InSpec gem. "Oh, a vulnerability. The chef-apply command. That's right! You could probably use it to find the fortune. Oh yeah, that troll. Is he a friend of yours? He walked by muttering something about missing his fortune. I'm sure I remember being able to find "missing_fortunes" like "find_weakness"
+"What did you see?" asks InSpec gem. "Oh, a vulnerability. The chef-apply command. That's right! You could probably use it to find the fortune. Oh yeah, that troll. Is he a friend of yours? He walked by muttering something about missing his fortune. I'm sure I remember being able to find "missing_fortunes" like "find_tools"
 
 Well why don't you have a go at finding this fortune. I'd be willing to help if you'd be willing to take me with you.
 

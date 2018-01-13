@@ -35,17 +35,17 @@ ADD bash_history /root/.bash_history
 
 # Add the game
 ADD .game_state.yml /
-
+ADD silicon-mountain.txt /
 
 # Add the additional commands for InSpec for player
 RUN mkdir /tools
 # TODO: eventually thet ools should remain in here and then be distributed when they are needed.
-ADD tools/find_weakness/ /find_weakness
+ADD tools/find_tools/ /find_tools
 ADD tools/find_fortune/ /find_fortune
 
 # Add InSpec for Game
 RUN mkdir /events
-ADD events/player_discovered_weakness/ /events/player_discovered_weakness
+ADD events/player_discovered_tools/ /events/player_discovered_tools
 ADD events/player_discovered_fortune/ /events/player_discovered_fortune
 ADD events/player_recovered_fortune/ /events/player_recovered_fortune
 
