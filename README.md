@@ -30,11 +30,11 @@ The storyteller explains chef-apply and resources.
 
 The players install the package with chef-apply and complete the objective.
 
-Another friendly message arrives that instructs the players that they have a key that will help them accomplish the next objective. To recieve the key they will need to deploy a web application listening on a specific url and port. That application is stored on Github in a git repository. So they will need to retrieve that project with a remote file. The message concludes by telling the player to ask the storyteller for assistance.
+Another friendly message arrives that instructs the players that they have a key that will help them accomplish the next objective. To receive the key they will need to deploy a web application listening on a specific url and port. That application is stored on Github in a git repository. So they will need to retrieve that project with a remote file. The message concludes by telling the player to ask the storyteller for assistance.
 
 The storyteller explains chef-apply, creating recipe files, and ordered execution of resources. She explains the remote_file resource and the execute resource.
 
-The player creates a recipe file that is able to retreive the web application, unzip it, and install dependencies. The player receives the key at the specified location.
+The player creates a recipe file that is able to retrieve the web application, unzip it, and install dependencies. The player receives the key at the specified location.
 
 The key allows the player to decrypt a file. The command requires sudo level permissions so it requires them to use an execute resource.
 
