@@ -21,8 +21,11 @@ scenes:
         description: You decide to grab the hammer and start thinking that once this troll leaves you alone for a bit that you'll be able to get some work done.
         transition: get-to-work
   get-to-work:
-    description: You stand with your large hammer over a hellish silicon landscape.
-      Glowing red numbers illuminating the sky. A large troll stands particularly close, staring over your shoulder.
+    description: "You stand with your large hammer over a hellish silicon landscape. Glowing red numbers illuminating the sky. A large troll stands particularly close, staring over your shoulder.
+    "
+    todos:
+    - Add a number of hammer strikes before the gem shows up.
+    - Create a set of responses for these actions to allow multiple use
     menu:
     -
       name: "Try to escape by opening a portal."
@@ -44,10 +47,12 @@ scenes:
       mine-bits:
         description: "Bits fly up into the air as you smash your hands into silicon below you.\n\nヽ༼ ಠ益ಠ ༽ﾉ The troll laughs excitedly as the large LED numbers in the sky continue to climb higher."
       inspect-gem:
-        description: "{•̃_•̃} 'No, no, no. My name is InSpec the gem! I am able to find things hidden in the darkness. But before that happens you will need to find a profile. Maybe hiding under some of thos bits.' After the gem tells you how it works you think you'd be willing to give it a try."
+        description: "{•̃_•̃} \"No, no, no. My name is InSpec the gem! You must be a user!\" the tiny gem makes a low soothing tone. \"I am tool that could someone like you. I find what is hidden in the darkness. But before that happens you will need to find a profile for me to show you. Maybe there is one under some of these bits.\""
         transition: get-to-code
   get-to-code:
-    description: "{•̃_•̃} \"Try to see if you can find any tools lying around. When you commune with the code world, ask me to run this command\":\n\n$ inspec exec find_tools"
+    description: "{•̃_•̃} \"Oh there is one! You are going to have to ask me to execute it. But not here, in the 'code world'. User's can get to the code world. When you get there ask me to run this\":\n\n$ inspec exec find_tools"
+    todos:
+    - Have the profile appear after the bits have been smashed one more time
     menu:
     -
       name: "Commune with the silicon."
@@ -64,7 +69,9 @@ scenes:
         condition: inspec exec /events/player_discovered_tools
         transition: found-chef-apply
   find-fortune:
-    description: "{•̃_•̃} \"Trolls love attention first unless they have a 'fortune' to obsess over. Perhaps you could use me to find the fortune is after and bring it back.\" Return to the code world and ask me to run\":\n\n$ inspec exec find_fortune"
+    todos:
+    - Have the profile appear when the user returns to this world
+    description: "{•̃_•̃} \"Trolls love attention! Of course, they can be distracted when given 'fortune' to obssess over. Perhaps you could use me to find this troll's missing fortune.\" Return to the code world and ask me to run\":\n\n$ inspec exec find_fortune"
     menu:
     -
       name: "Commune with the silicon."
@@ -81,7 +88,7 @@ scenes:
         condition: inspec exec /events/player_discovered_fortune
         transition: found-fortune
   learn-chef-apply:
-    description: "{•̃_•̃} \"The tool you found, 'chef-apply', is powerful in the code world. I can detect things, while it can correct things. Together, with your help, we may be able to recover the troll's 'fortunes' and us get out of here.\" inspec says as it stares off towards the horizon.\n\n\"When you get back to the code word wield the power of 'chef-apply' by running\":\n\n$ chef-apply -e \"package 'fortunes'\""
+    description: "{•̃_•̃} \"The tool you found, 'chef-apply', is powerful in the code world. I can only detect things but it can correct things. Together, with your help, we may be able to recover the troll's 'fortunes' and us get out of here.\" inspec says as it stares off towards the horizon.\n\n\"When you get back to the code word wield the power of 'chef-apply' by running\":\n\n$ chef-apply -e \"package 'fortunes'\""
     menu:
     -
       name: "Commune with the silicon."
