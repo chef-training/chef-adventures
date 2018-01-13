@@ -16,6 +16,7 @@ class GameState
 
     if menu.include?(command)
       puts options[command]['description']
+      puts "\n"
 
       if options[command]['transition'] == 'exit'
         @exit = true
