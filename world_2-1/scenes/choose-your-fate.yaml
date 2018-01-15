@@ -1,0 +1,26 @@
+description: "You start to feel a sensation starting from the base of your neck. A quick shot. A moment of adreneline.
+
+
+（ ^_^）\"Correct now has an informed place to start.\"
+
+
+Your body finds itself taking flight or continue the fight."
+menu:
+-
+  name: "Check a few more messages ..."
+  value: check-more-messages
+-
+  name: "Make a run for the break room ..."
+  value: run-break-room
+options:
+  check-more-messages:
+    description: "You move through your Funr mail, Snapchat snaps, Soilhub notifications, Wink boxes, and Yellly requests. You then updated all your passwords, unsubscribed from unwanted messages, and find yourself only two notifications away from inbox zero."
+    event: approaching-infinity
+  run-break-room:
+    description: "TODO: Heads down. Runs out. Corporate art on the walls. Dives in..."
+    event: run-break-room
+events:
+  approaching-infinity:
+    transition: approaching-infinity
+  run-break-room:
+    transition: break-room

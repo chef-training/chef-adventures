@@ -1,0 +1,19 @@
+description: "You start to wonder about Lunch -- was it going to be chicken chimichangas or chicken à la king?
+
+
+（ ^_^）\"How do you know what to fix or when you're done? That's detection and thats why ...\"
+
+
+Your attention turns to your messages...
+"
+menu:
+-
+  name: "Check messages ..."
+  value: check-messages
+options:
+  check-messages:
+    description: "You move through your Funr mail, Snapchat snaps, Soilhub notifications, Wink boxes, and Yellly requests. You then updated all your passwords, unsubscribed from unwanted messages, and find yourself only a few more notifications away from inbox zero."
+    event: choose-your-fate
+events:
+  choose-your-fate:
+    transition: choose-your-fate

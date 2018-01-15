@@ -1,0 +1,32 @@
+description: "The lights shine brightly down on every knob and pull in the tiny kitchen. A tea kettle sits on a counter next to a small refrigerator.
+
+
+t(-_-t) // This is an adventure game after all. // you think to yourself. // Of course, probably not a very good one. //
+
+
+You settle in for the dissapointment ahead. And look over the options laid before you."
+menu:
+-
+  name: "Open the drawer ..."
+  value: open-drawer
+-
+  name: "Drink some tea ..."
+  value: drink-tea
+options:
+  open-drawer:
+    description: "The drawer contains a large number of corporate marketing fliers and a red stapler."
+    event: open-drawer
+  drink-tea:
+    description: "(⊙.☉)7 // Running out on a class like that needs a good reason. And a good reason is... a nice cup of tea. //
+
+
+You finish your first cup with gusto, pause, and then think it wouldn't hurt to have another. When you reach for your empty cup you are surprised to find it filled.
+
+
+(⊙.☉)7 // That's odd! I'm sure I'm not a faulty narrator. //"
+    event: second-cup
+events:
+  open-drawer:
+    transition: opened-drawer
+  second-cup:
+    transition: second-cup
