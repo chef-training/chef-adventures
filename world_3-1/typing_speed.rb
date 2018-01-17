@@ -34,7 +34,7 @@ module Dutchman
           hash = { slow: wpm_to_cps(23.0),
             moderate: wpm_to_cps(35.0),
             fast: wpm_to_cps(50.0),
-            very_fast: wpm_to_cps(6400.0) }
+            very_fast: wpm_to_cps(7200.0) }
           hash.default = hash[:moderate]
           hash
         end

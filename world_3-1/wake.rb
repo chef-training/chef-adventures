@@ -158,19 +158,17 @@ def start_game
 end
 
 def layout(state)
-  prompt = TTY::Prompt.new
-  prompt.say "\n"
-  prompt.say state.picture.to_s
-  prompt.say "\n"
 
-  # TODO: create a parsing engine for the layout and color.
-  description = state.description.colorize(:white).fit(TTY::Screen.width)
-  speed = Dutchman::GhostWriter::TypingSpeed.new(:very_fast,true)
+  writer = Writer.new # Kernel for puts/print
 
-  description.chars.each do |char|
-    print char
-    sleep(speed.delay)
-  end
+  data = state.current_scene
+  description_file = "#{state.current_act}/scenes/#{state.current_scene_name}.desc"
+
+  description = File.exist?(description_file) ? File.read(description_file) : state.description
+  scene = Scene.new(data,description,state.picture)
+
+  scene.describe(writer)
+  writer.write
 
 end
 
@@ -225,6 +223,130 @@ end
 # Allow the game engine to use additional commands.
 
 command = ARGV[0]
+
+class Scene
+  def initialize(data, description, art)
+    @data = data
+    @description = description
+    @art = art
+  end
+
+  attr_reader :description, :art
+
+  def describe(writer)
+    writer.new_stroke(:art, :default, :default)
+    writer.add(art)
+
+    description.lines.each do |line|
+      if matches = line.match(/\[(?<metadata>[^\]]+)\]/)
+        stroke, speed, color = matches[:metadata].split(',').map { |data| data.strip }
+        stroke = (stroke || :default).to_sym
+        speed = (speed || :default).to_sym
+        color = (color || :default).to_sym
+        writer.new_stroke(stroke, color, speed)
+      else
+        writer.add(line.rstrip)
+      end
+    end
+  end
+end
+
+class Writer
+  def initialize
+    @out = Kernel
+  end
+
+  attr_reader :out
+
+  def strokes
+    @strokes ||= []
+  end
+
+  def new_stroke(name, color, speed)
+    strokes << all_strokes[name].new(speed, color)
+  end
+
+  def all_strokes
+    @all_strokes ||= { typed: TypedStroke,
+      default: DefaultStroke,
+      speech: SpeechStroke,
+      art: ArtStroke }
+  end
+
+  def current_stroke
+    strokes.last
+  end
+
+  def add(text)
+    current_stroke.add(text)
+  end
+
+  def write
+    strokes.each do |stroke|
+      stroke.write(out)
+      out.puts
+    end
+  end
+end
+
+class Stroke
+  def initialize(speed, color)
+    @speed = speed
+    @color = color
+    @text = ""
+  end
+
+  attr_reader :speed, :color, :text
+
+  def add(text)
+    @text << text
+  end
+
+  def write(out)
+    raise 'Unable to write; Subclass Stroke!'
+  end
+end
+
+class ArtStroke < Stroke
+  def write(out)
+    out.puts text.colorize(color)
+  end
+end
+
+class DefaultStroke < Stroke
+  def write(out)
+    out.puts text.colorize(color).fit(TTY::Screen.width)
+  end
+end
+
+class TypedStroke < Stroke
+  def write(out)
+    formatted_text = text.colorize(color).fit(TTY::Screen.width)
+    typing_speed = Dutchman::GhostWriter::TypingSpeed.new(speed,true)
+
+    formatted_text.chars.each do |char|
+      out.print char
+      sleep(typing_speed.delay)
+    end
+  end
+end
+
+class SpeechStroke < TypedStroke
+  # def write(out)
+  #   if
+  #   # split for heads for text
+  #   # start of speech "
+  #   # End of sentences or other punctation
+  #   # Elipses
+  #
+  # end
+end
+
+
+[:black, :light_black, :red, :light_red, :green, :light_green, :yellow, :light_yellow, :blue, :light_blue, :magenta, :light_magenta, :cyan, :light_cyan, :white, :light_white, :default].each do |color|
+
+  puts "#{color} The quick brown fox jumped over the lazy dog.".colorize(color)
+end
 
 if command.nil? || command == 'run'
   load_current_game_state
