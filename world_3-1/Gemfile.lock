@@ -1,0 +1,40 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    colorize (0.8.1)
+    equatable (0.5.0)
+    hitimes (1.2.6)
+    necromancer (0.4.0)
+    pastel (0.7.2)
+      equatable (~> 0.5.0)
+      tty-color (~> 0.4.0)
+    timers (4.1.2)
+      hitimes
+    tty-color (0.4.2)
+    tty-cursor (0.5.0)
+    tty-prompt (0.14.0)
+      necromancer (~> 0.4.0)
+      pastel (~> 0.7.0)
+      timers (~> 4.1.2)
+      tty-cursor (~> 0.5.0)
+      tty-reader (~> 0.2.0)
+    tty-reader (0.2.0)
+      tty-cursor (~> 0.5.0)
+      tty-screen (~> 0.6.4)
+      wisper (~> 2.0.0)
+    tty-screen (0.6.4)
+    wisper (2.0.0)
+    word_wrap (1.0.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  colorize
+  tty-color
+  tty-prompt
+  tty-screen
+  word_wrap
+
+BUNDLED WITH
+   1.16.0.pre.3

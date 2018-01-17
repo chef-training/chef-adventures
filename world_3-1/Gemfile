@@ -1,0 +1,7 @@
+source 'https://rubygems.org'
+
+gem 'tty-prompt'
+gem 'tty-screen'
+gem 'tty-color'
+gem 'colorize'
+gem 'word_wrap'

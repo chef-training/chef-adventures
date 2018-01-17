@@ -1,0 +1,31 @@
+description: "You start to feel a sensation starting from the base of your neck. A quick shot. A moment of adreneline.
+
+
+（ ^_^）\"Correct now has an informed place to start.\"
+
+
+Your body finds itself taking flight or continue the fight."
+menu:
+-
+  name: "Check a few more messages ..."
+  value: check-more-messages
+-
+  name: "Make a run for the break room ..."
+  value: run-break-room
+options:
+  check-more-messages:
+    description: "You clear all your Pinterest pins, Belly bumps, and Grazr clips. You are now only two notifications away from inbox zero."
+    event: approaching-infinity
+  run-break-room:
+    description: "With your head down, to avoid eye contact, you walk past a sea of faces whose eyes immediately find yours. You know not to make eye contact with them otherwise you would likely be pinned as the one starting the rebellion. So you shift effeciently, callously towards the door. Outside in the hall you are overcome with extreme joy.
+
+
+// I saved yourself from torture! I won't spend another moment being lectured. And besides, your current career isn't so bad //
+
+You round the corner and enter the break room with almost a swagger from the pride you feel from saving yourself all that wasted work learning whatever technology was being presented back there."
+    event: run-break-room
+events:
+  approaching-infinity:
+    transition: approaching-infinity
+  run-break-room:
+    transition: break-room
