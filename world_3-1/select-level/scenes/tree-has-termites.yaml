@@ -1,0 +1,11 @@
+menu:
+  -
+    name: "Listen to the wind..."
+    value: focus
+options:
+  what-was-the-matter:
+    description: "Woodpecker twists and swivels its head. Fluttering upon the trunk singing ... Swing it so deftly with `chef-apply -e '(down on any resource I describe)'"
+    event: focus
+events:
+  focus:
+    transition: exit

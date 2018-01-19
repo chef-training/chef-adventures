@@ -1,18 +1,11 @@
-description: "You have found yourself in another reality. You have entered... another level."
 menu:
   -
-    name: "The End. Thanks for playing!"
-    value: thanks-for-playing
+    name: "Begin the story ..."
+    value: begin-the-story
 options:
-  thanks-for-playing:
-    description: "Thank you for playing the demo! At the end of each of these paths the player would find a different adventure that teaches a new concept.
-
-
-The introduction serves to connect and surprise the player. Provide some magic and variation between the initial play-throughs to give people a reason to explore.
-
-
-Feedback to @franklinwebber."
-    event: the-end
+  begin-the-story:
+    description: "A distant breeze. A changing season. The red-bellied woodpecker fluttered and flew through withered branches."
+    event: woodpecker-comes-home
 events:
-  the-end:
-    game: the-end
+  woodpecker-comes-home:
+    transition: woodpecker-comes-home

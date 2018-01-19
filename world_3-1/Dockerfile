@@ -25,21 +25,28 @@ RUN apt-get install -y expect vim tig ssh-client
 RUN apt-get clean
 
 # Add the game engine
-ADD Gemfile /
-RUN /opt/chefdk/bin/chef exec bundle install
-ADD wake.rb /
+RUN mkdir /game
+ADD Gemfile /game
+RUN cd /game && /opt/chefdk/bin/chef exec bundle install
+ADD wake.rb /game
+RUN mkdir /game/lib
+ADD lib/* /game/lib/
 
 # Add the shell state
 ADD bashrc /root/.bashrc
 ADD bash_history /root/.bash_history
 
 # Add the game
-ADD .game_state.yml /
-RUN mkdir /art
-ADD art/* /art/
+ADD .game_state.yml /game
+RUN mkdir /game/woodpecker-and-the-oak && mkdir /game/woodpecker-and-the-oak/art && mkdir /game/woodpecker-and-the-oak/scenes
+ADD woodpecker-and-the-oak/scenes/* /game/woodpecker-and-the-oak/scenes/
+ADD woodpecker-and-the-oak/art/* /game/woodpecker-and-the-oak/art/
 
-RUN mkdir /scenes
-ADD scenes/* /scenes/
+# Add the condition tools
+RUN mkdir /game/inspec && mkdir /game/inspec/looked_around
+ADD inspec/looked_around.rb /game/inspec/
+ADD inspec/looked_at_tree.rb /game/inspec/
+ADD inspec/looked_at_tree_trunk.rb /game/inspec/
 
 # presets
 VOLUME ["/data"]

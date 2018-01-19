@@ -116,4 +116,5 @@ function check_for_complete {
   fi
 }
 
+cd /game
 wake
