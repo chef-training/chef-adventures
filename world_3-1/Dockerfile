@@ -48,9 +48,9 @@ ADD inspec/* /game/inspec/
 
 RUN mkdir -p /game/tree/trunk/tallest_branch
 RUN mkdir -p /game/tree/trunk/shortest_branch
-RUN mkdir -p /game/tree/trunk/an_averge_branch
-RUN mkdir -p /game/tree/trunk/a_median_branch
-RUN mkdir -p /game/tree/trunk/a_git_branch
+RUN mkdir -p /game/tree/trunk/averge_branch
+RUN mkdir -p /game/tree/trunk/median_branch
+RUN mkdir -p /game/tree/trunk/git_branch
 RUN mkdir -p /game/tree/roots/more_roots/roots_worms_and_dirt
 
 ADD woodpecker-and-the-oak/actors/termites.bug /game/tree/trunk/termites.bug
