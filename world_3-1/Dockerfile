@@ -44,9 +44,18 @@ ADD woodpecker-and-the-oak/art/* /game/woodpecker-and-the-oak/art/
 
 # Add the condition tools
 RUN mkdir /game/inspec && mkdir /game/inspec/looked_around
-ADD inspec/looked_around.rb /game/inspec/
-ADD inspec/looked_at_tree.rb /game/inspec/
-ADD inspec/looked_at_tree_trunk.rb /game/inspec/
+ADD inspec/* /game/inspec/
+
+RUN mkdir -p /game/tree/trunk/tallest_branch
+RUN mkdir -p /game/tree/trunk/shortest_branch
+RUN mkdir -p /game/tree/trunk/an_averge_branch
+RUN mkdir -p /game/tree/trunk/a_median_branch
+RUN mkdir -p /game/tree/trunk/a_git_branch
+RUN mkdir -p /game/tree/roots/more_roots/roots_worms_and_dirt
+
+ADD woodpecker-and-the-oak/actors/termites.bug /game/tree/trunk/termites.bug
+ADD woodpecker-and-the-oak/actors/lady.bug /game/tree/trunk/ladybug.bug
+
 
 # presets
 VOLUME ["/data"]

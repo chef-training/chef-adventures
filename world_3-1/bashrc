@@ -111,8 +111,6 @@ function check_for_complete {
   /opt/chefdk/bin/chef exec ruby wake.rb check
   if [ $? -eq 0 ] ; then
     exit 0
-  else
-    echo -ne "You may return to your body at anytime by running: wake\n"
   fi
 }
 

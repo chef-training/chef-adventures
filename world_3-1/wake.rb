@@ -25,15 +25,13 @@ command = ARGV[0]
 
 if command.nil? || command == 'run'
   game_state = GameState.new
-  # TODO: find the
   game_state.start!('woodpecker-comes-home.woodpecker-and-the-oak')
 elsif command == 'check'
-  puts "Checking on completed state!"
+  # puts "Checking on completed state!"
 
   game_state = GameState.new
 
   if File.exist?('game_state.yml')
-    require 'pry' ; binding.pry
     data = YAML.load(File.read('game_state.yml'))
     game_state.start!(data[:current_scene])
   end
@@ -42,6 +40,6 @@ elsif command == 'check'
   # if state.complete?
   #   exit 0
   # else
-  #   exit 1
+  exit 1
   # end
 end

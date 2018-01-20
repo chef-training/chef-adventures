@@ -13,5 +13,7 @@ option "Look at the tree ...", event: 'look-at-the-tree'
 event 'look-at-the-tree' do
   write "Woodpecker's eyes started crossing and then the lids dropped. Snoring peacefully at the base of the tree, Woodpecker dreamed."
 
+  write "ヽ(´ー｀)ノ \"Look around with `ls`,\" replied the tree.", :speech, :very_fast, :blue
+
   transition 'asleep-on-the-job.woodpecker-and-the-oak'
 end
