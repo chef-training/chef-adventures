@@ -7,7 +7,7 @@ require 'colorize'
 require 'word_wrap'
 require 'word_wrap/core_ext'
 
-$LOAD_PATH << "."
+$LOAD_PATH << "/game"
 
 require 'lib/typing_speed'
 require 'lib/game_state'
@@ -18,6 +18,8 @@ require 'lib/writer'
 
 command = ARGV[0]
 
+# TODO-feature: Allow a player to set the colors that they want in an options screen of sorts.
+#
 # [:black, :light_black, :red, :light_red, :green, :light_green, :yellow, :light_yellow, :blue, :light_blue, :magenta, :light_magenta, :cyan, :light_cyan, :white, :light_white, :default].each do |color|
 #
 #   puts "#{color} The quick brown fox jumped over the lazy dog.".colorize(color)
@@ -27,8 +29,6 @@ if command.nil? || command == 'run'
   game_state = GameState.new
   game_state.start!('woodpecker-comes-home.woodpecker-and-the-oak')
 elsif command == 'check'
-  # puts "Checking on completed state!"
-
   game_state = GameState.new
 
   if File.exist?('game_state.yml')

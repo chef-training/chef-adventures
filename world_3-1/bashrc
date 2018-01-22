@@ -104,15 +104,18 @@ fi
 #fi
 
 function wake {
-  /opt/chefdk/bin/chef exec ruby wake.rb run
+  /opt/chefdk/bin/chef exec ruby /game/wake.rb run
 }
 
 function check_for_complete {
-  /opt/chefdk/bin/chef exec ruby wake.rb check
-  if [ $? -eq 0 ] ; then
-    exit 0
-  fi
+  /opt/chefdk/bin/chef exec ruby /game/wake.rb check
+  # TODO-workflow: again this should be default, a flag to disable it.
+  # if [ $? -eq 0 ] ; then
+  #   exit 0
+  # fi
 }
 
 cd /game
+
+# TODO-workflow: this should be overridable - provided to disable the game from starting.
 wake

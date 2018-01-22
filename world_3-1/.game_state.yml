@@ -1,4 +1,4 @@
 # This is the initial game state
 ---
-current_scene: "another-level.select-level"
+current_scene: "woodpecker-comes-home.woodpecker-and-the-oak"
 commands: []

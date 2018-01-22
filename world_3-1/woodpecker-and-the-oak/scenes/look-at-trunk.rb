@@ -1,4 +1,4 @@
-condition 'looked_at_tree_trunk', "inspec exec inspec/looked_at_tree_trunk.rb" do
+condition 'looked_at_tree_trunk' do
 
   write "ヽ(´ー｀)ノ \"Ah, there they rest along my trunk. I can hear them chattering,\" said the tree. \"Take a closer look at them with `cat tree/trunk/termites.bug`\"", :speech, :very_fast, :blue
 

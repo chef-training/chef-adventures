@@ -25,6 +25,7 @@ class GameState
   end
 
   def save
+    # TODO-refactor: This should be some object to take care of saving scenes
     File.write('game_state.yml',{ current_scene: @current_scene.address }.to_yaml)
   end
 end

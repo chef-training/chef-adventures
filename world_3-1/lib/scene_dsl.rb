@@ -39,8 +39,8 @@ module SceneDSL
     scene.transition = scene_name
   end
 
-  def condition(name,command,data = {},&block)
-    condition = Condition.new(name,command,data,&block)
+  def condition(name,data = {},&block)
+    condition = Condition.new(name,data,&block)
     scene.conditions.push condition
     condition
   end

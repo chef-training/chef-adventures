@@ -24,6 +24,15 @@ RUN apt-get install -y expect vim tig ssh-client
 # cleanup
 RUN apt-get clean
 
+#
+# GAME CODE AHEAD
+#
+# TODO-workflow: the game should probably exist unarchived on the house system, be archived in the building process, copied into the image, and then unpackaged.
+#
+# TODO-workflow: It would also be great to be able to spin up a studio that lets you use your local file-system mounted to make it easier to bring in changes. Changes here would not able to translate directly to the game being played (e.g. bashrc). We would also want to possibly create a temp directory where it would install the file system locally and then mount into the studio. This would give a better view of what is going on.
+#
+# TODO-feature: This view concept sounds like something a webpage could report. Imagining an instructor watching over and coming in to provide help if needed within the context of the adventure. They would be able to see what is happening all through the browser representation. Ultimately, the service that watches the file system could also send these events to the queue and the webpage could read that queue and update the state of the game board and read state calls inserted from the game client.
+
 # Add the game engine
 RUN mkdir /game
 ADD Gemfile /game
@@ -46,15 +55,19 @@ ADD woodpecker-and-the-oak/art/* /game/woodpecker-and-the-oak/art/
 RUN mkdir /game/inspec && mkdir /game/inspec/looked_around
 ADD inspec/* /game/inspec/
 
+# TODO-feature: Should the actor itself know how to define itself. Right now the actors being added to that folder do not have a list of who they are and where they need to be at what time.
+
 RUN mkdir -p /game/tree/trunk/tallest_branch
 RUN mkdir -p /game/tree/trunk/shortest_branch
-RUN mkdir -p /game/tree/trunk/averge_branch
-RUN mkdir -p /game/tree/trunk/median_branch
-RUN mkdir -p /game/tree/trunk/git_branch
+RUN mkdir -p /game/tree/trunk/average_branch
 RUN mkdir -p /game/tree/roots/more_roots/roots_worms_and_dirt
 
+ADD woodpecker-and-the-oak/actors/woodpecker.bird /game/woodpecker.bird
 ADD woodpecker-and-the-oak/actors/termites.bug /game/tree/trunk/termites.bug
 ADD woodpecker-and-the-oak/actors/lady.bug /game/tree/trunk/ladybug.bug
+
+RUN mkdir -p /game/box
+ADD woodpecker-and-the-oak/actors/box/* /game/box/
 
 
 # presets

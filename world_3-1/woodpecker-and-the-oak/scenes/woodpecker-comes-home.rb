@@ -4,7 +4,7 @@ write "The woodpecker came to rest on the branches of a mighty oak tree. She gav
 
 write "ヽ(´ー｀)ノ \"Welcome back ... my friend,\" slowly replied the tree.", :speech, :very_fast, :blue
 
-write "ᕕ( ᐛ )ᕗ \"Back! Welcome? No need. I will come back to you until the world is without you, me, or the sun.\" answered the woodpecker sweetly. \"\"", :speech, :very_fast, :green
+write "ᕕ( ᐛ )ᕗ \"Back! Welcome? No need. I will come back to you until the world is without you, me, or the sun.\" answered the woodpecker sweetly.", :speech, :very_fast, :green
 
 write "The woodpecker and oak talked away the day. The tree mostly listening. Until finally, the tree came to his request...", :typed, :very_fast, :yellow
 

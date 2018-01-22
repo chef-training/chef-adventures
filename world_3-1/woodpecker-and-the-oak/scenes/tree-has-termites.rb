@@ -15,5 +15,7 @@ event 'look-at-the-tree' do
 
   write "ヽ(´ー｀)ノ \"Look at your surroundings with `ls`,\" replied the tree.", :speech, :very_fast, :blue
 
+  write "[NOTE: There will be a delay after every command you enter. This was a poor implementation decision that will live and die with this version. Please, have patience while waiting for the prompt to return. ]"
+
   transition 'asleep-on-the-job.woodpecker-and-the-oak'
 end

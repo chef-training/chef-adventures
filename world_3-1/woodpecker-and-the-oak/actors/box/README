@@ -1,0 +1,47 @@
+----*---------*--------*---------*--------*---------*--------*---------*--------
+*---------*--------*---------*--------*---------*--------*---------*--------*---
+----*---------*--------*---------*--------*---------*--------*---------*--------
+
+Dollar Leaf Club would like to formally welcome you to Spring. It's that season
+again! And this year /green/ is back in style and isn't about time you turned
+over a new leaf.
+
+Install your leaves:
+
+  *!* Do not unplug your power or turn off your device. *!*
+
+  1. Describe the PATH FROM where you are working to the `green.leaf`
+
+  2. Describe the PATH TO where you are want to create a new `green.leaf`
+
+  3. Run the copy command, `cp PATH_FROM PATH_TO`
+
+
+
+    . (YOU ARE HERE)
+    ├── box
+    │   ├── README (Hey, that's me: `box/README`)
+    │   └── green.leaf (PATH FROM)
+    │
+    │
+    └─── tree
+        ├── roots
+        │   └── more_roots
+        │       └── roots_worms_and_dirt
+        └── trunk
+            ├── average_branch   (PATH TO)
+            ├── git_branch       (PATH TO)
+            ├── median_branch    (PATH TO)
+            ├── shortest_branch  (PATH TO)
+            └── tallest_branch   (PATH TO)
+
+
+Good luck!
+
+                                                Sincerely,
+
+                                                Dollar Leaf Club
+
+----*---------*--------*---------*--------*---------*--------*---------*--------
+*---------*--------*---------*--------*---------*--------*---------*--------*---
+----*---------*--------*---------*--------*---------*--------*---------*--------
